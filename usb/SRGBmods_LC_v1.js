@@ -1,6 +1,6 @@
 export function Name() { return "SRGBmods LED Controller v1"; }
-export function VendorId() { return 0x16D0; }
-export function ProductId() { return 0x1205; }
+export function VendorId() { return 0x16D1; }
+export function ProductId() { return 0x1206; }
 export function Publisher() { return "FeuerSturm"; }
 export function Documentation() { return "gettingstarted/srgbmods-net-info"; }
 export function Size() { return [1, 1]; }

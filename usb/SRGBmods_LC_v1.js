@@ -95,7 +95,7 @@ function compareFirmwareVersion() {
 }
 
 function requestFirmwareVersion() {
-	const packet = [ 0x00, 0x00, 0x00, 0x00, 0xCC ];
+	const packet = [ 2, 0x00, 0x00, 0x00, 0x00, 0xCC ];
 	device.write(packet, 65);
 	compareFirmwareVersion();
 }
@@ -161,7 +161,7 @@ function SendChannel(Channel, overrideColor) {
 	const NumPackets = Math.ceil(ChannelLedCount / MaxLedsInPacket / multiplier);
 
 	for(let CurrPacket = 1; CurrPacket <= NumPackets; CurrPacket++) {
-		let packet = [0x00, CurrPacket, NumPackets, 0x00, 0xAA];
+		let packet = [2, 0x00, CurrPacket, NumPackets, 0x00, 0xAA];
 		packet = packet.concat(ColorCompression_enable ? compressedRGB.splice(0, 60) : RGBData.splice(0, 60));
 		device.write(packet, 65);
 	}
@@ -205,7 +205,7 @@ function updateHWLsettings() {
 		const statusledenable = StatusLED_enable == true ? 0x01 : 0x00;
 		const colorcompressionenable = ColorCompression_enable == true ? 0x01 : 0x00;
 
-		const packet = [0x00, 0x00, 0x00, 0x00, 0xBB, hwlenable, hwlreturn, HWL_returnafter, hwleffectMode, HWL_effectSpeed, HWL_brightness, hwlcolor[0], hwlcolor[1], hwlcolor[2], statusledenable, colorcompressionenable ];
+		const packet = [2, 0x00, 0x00, 0x00, 0x00, 0xBB, hwlenable, hwlreturn, HWL_returnafter, hwleffectMode, HWL_effectSpeed, HWL_brightness, hwlcolor[0], hwlcolor[1], hwlcolor[2], statusledenable, colorcompressionenable ];
 		device.write(packet, 65);
 	}
 }

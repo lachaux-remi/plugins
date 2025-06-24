@@ -83,7 +83,7 @@ export function Initialize() {
 }
 
 function compareFirmwareVersion() {
-	const firmwarePacket = device.read([0x00], 4, 10);
+	const firmwarePacket = device.read(2, [0x00], 4, 10);
 	const FirmwareVersion = firmwarePacket[1] + "." + firmwarePacket[2] + "." + firmwarePacket[3];
 	device.log("SRGBmods LC v1 Firmware version: " + FirmwareVersion);
 	device.log("SRGBmods LC v1 Plugin version:   " + PluginVersion);
